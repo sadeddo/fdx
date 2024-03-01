@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>symfony</title>
+
+    <!-- Material Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Figtree' rel='stylesheet'>
+
+    <!-- Custom CSS -->
+        <link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body class="auth">
+        <nav class="navbar navbar-expand-lg  auth">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" style="margin-left:43px;">
+                </a>
+            </div>
+        </nav>
+        <main class="main-container">
+            <div class="container" style="max-width: 1330px;height: auto;margin-top:1%;">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-5" style="padding: 5%;">
+                        <div class="form-auth">
+                            <h4 class="titre1">Bienvenue chez vous</h4>
+                            <h6 class="titre2">Il est temps de créer votre compte et nous rejoindre</h6><br>
+                            {% for message in app.flashes('error') %}
+                                <div class="alert alert-danger">{{ message }}</div>
+                            {% endfor %}
+                            {{ form_errors(form) }}
+                            {{ form_errors(form.email) }}
+                            <h6 class="titre3">Je suis un(e)  </h6>
+                            <form name="register" method="post">
+                                <div class="col-md-12">
+                                        <label class="label">Email</label>
+                                        <input type="email" name="user[email]" id="email" class="form-control input" autocomplete="email" required autofocus>
+                                </div>
+                                <div class="col-md-12">
+                                        <label class="label">Mot de passe</label>
+                                        <input type="password" name="user[password]"  id="password" class="form-control input"required>
+                                </div>
+                                {{ form_row(form._token) }}
+                                <button style="margin-top:14px;" type="submit" class="btn btn-secondary poster">Créer mon compte</button>
+                            </form>
+                        </div><br>
+                        <div style="text-align:center;font-size: 0.9rem;">
+                            <h6 style="color: #797171;font-size: 0.9rem;">Vous avez déja un compte ? <a href="{{ path('app_login') }}" style="color:#FF385C;">Se connecter</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+  </body>
+</html>
